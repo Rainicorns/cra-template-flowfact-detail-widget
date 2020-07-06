@@ -1,6 +1,6 @@
 {
   "name": "cra-template-flowfact-detail-widget",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "dependencies": {
     "@flowfact/api-services": "^16.20200629.286",
     "@types/react": "^16.9.41",
@@ -41,7 +41,7 @@
     "ffadd": "./scripts/ffadd.js",
     "ffremove": "./scripts/ffremove.js",
     "ffretarget": "./scripts/ffretarget.js",
-    "prep": "rm -rf template && mkdir template && cp .gitignore template/gitignore && cp README.md template/README.md && cp -rf public template/public && cp -rf src template/src && cp -rf scripts template/scripts && cp template.json template/template.json"
+    "prep": "rm -rf template && mkdir template && cp .gitignore template/gitignore && cp README.md template/README.md && cp -rf public template/public && cp -rf src template/src && cp -rf scripts template/scripts && cp template.json template/template.json && rm template/src/config/init.json"
   },
   "eslintConfig": {
     "extends": "react-app"
