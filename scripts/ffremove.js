@@ -17,7 +17,7 @@ try {
                 "content-type": "application/json; charset=utf-8"
             }
         }).then(r => r.text());
-        const layout = await fetch('https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts?schema=contacts', {
+        const layout = await fetch(`https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts?schema=${settings.schema}`, {
             method: 'get',
             headers: {
                 cognitoToken,
@@ -36,7 +36,7 @@ try {
             return column;
         })
 
-        const results = await fetch("https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts/contacts", {
+        const results = await fetch(`https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts/${settings.schema}`, {
             method: 'put',
             headers: {
                 cognitoToken,

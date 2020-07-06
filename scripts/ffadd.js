@@ -12,6 +12,17 @@ const fetch = require('node-fetch');
 
 async function main() {
 
+
+    if (!argv.column) {
+        console.error("[WARNING] No column provided. Assuming column index=0")
+        console.error("---------------------------------------------------")
+        console.error("     This is specified with : --column=[THE Column].")
+        console.error("\n\n\n")
+        argv.column = 0;
+    }
+
+
+
     const token = settings.apiUserToken;
     // exchange api token
     const cognitoToken = await fetch('https://api.production.cloudios.flowfact-prod.cloud/admin-token-service/stable/public/adminUser/authenticate', {
@@ -21,10 +32,12 @@ async function main() {
             "content-type": "application/json; charset=utf-8"
         }
     }).then(r => r.text());
-    // console.log(cognitoToken);
+    console.log(cognitoToken);
 
     // fetch layout of schema
-    const layout = await fetch('https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts?schema=contacts', {
+    const layoutURL = `https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts?schema=${settings.schema}`
+    console.log("Calling FF Platform : ", layoutURL)
+    const layout = await fetch(layoutURL, {
         method: 'get',
         headers: {
             cognitoToken,
@@ -37,20 +50,20 @@ async function main() {
 
     // get column
     const faker = require('faker');
-    const column = layout.layout.columns[1]
+    const column = layout.layout.columns[argv.column]
     const widgetDefinition = settings.widget;
     column.children.push(widgetDefinition)
     console.log('column : ', column, widgetDefinition)
 
     // add the widget
-    const results = await fetch("https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts/contacts",{
+    const results = await fetch(`https://api.production.cloudios.flowfact-prod.cloud/dynamic-layout-service/stable/widget-layouts/${settings.schema}`, {
         method: 'put',
         headers: {
             cognitoToken,
             "content-type": "application/json; charset=utf-8",
             "Accept": "application/json"
         },
-        body:JSON.stringify(layout)
+        body: JSON.stringify(layout)
     })
 
     console.log("Results : ", results)
