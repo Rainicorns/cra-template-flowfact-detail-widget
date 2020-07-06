@@ -25,3 +25,4 @@ yarn.lock
 src/config/init.json
 ff-helloworld.code-workspace
 
+template/src/config/init.json
