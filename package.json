@@ -1,6 +1,6 @@
 {
   "name": "cra-template-flowfact-detail-widget",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "@flowfact/api-services": "^16.20200629.286",
     "@types/react": "^16.9.41",
