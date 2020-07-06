@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import postRobot from 'post-robot';
+import { Authentication, EnvironmentManagement, EntityService as Service } from '@flowfact/api-services'
+import { reactLocalStorage } from 'reactjs-localstorage';
+import Widget from './Widget';
+import settings from '../json/init.json'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [entityID, setEntityID] = useState(0);
+  const [schemaID, setSchemaID] = useState(0);
+  const [isAuth, setIsAuth] = useState(false);
+  const [tokens, setTokens] = useState(false);
 
+  useEffect(() => {
+    (async () => {
+      if (tokens) {
+        await Authentication.loginWithTokens(tokens)
+        setIsAuth(true);
+      }
+    })()
+  }, [tokens])
+
+  useEffect(() => {
+    if (reactLocalStorage.getObject('fftokens')) {
+      setTokens(reactLocalStorage.getObject('fftokens'));
+    }
+
+    postRobot.on('initial_7TF20XP2P6', async ({ data }) => {
+      EnvironmentManagement.stage = data.environment.stage
+      EnvironmentManagement.version = data.environment.versionTag
+      reactLocalStorage.setObject('fftokens', data.tokens);
+      setTokens(data.tokens);
+
+    });
+    postRobot.send(window.parent, `ready_7TF20XP2P6`, true);
+    postRobot.on(`data_7TF20XP2P6`, async (event) => {
+      setEntityID(event.data.entityId);
+      setSchemaID(event.data.schemaId);
+    });
+  }, [])
+
+  function EntityGetter() {
+    const [entity, setEntity] = useState(0);
+    useEffect(() => {
+      (async () => {
+        const results = await Service.fetchEntity(schemaID, entityID);
+        setEntity(results.data);
+      })();
+    }, []);
+    return <>{entity && <Widget entity={entity} />}</>
+  }
+
+  return (
+    <>
+      {isAuth && entityID && schemaID && <EntityGetter entityID={entityID} schemaID={schemaID} />}
+    </>
+  )
+}
 export default App;
