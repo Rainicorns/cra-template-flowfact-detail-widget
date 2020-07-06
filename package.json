@@ -26,7 +26,8 @@
     "eject": "react-scripts eject",
     "ffinit": "./scripts/ffinit.js",
     "ffadd": "./scripts/ffadd.js",
-    "ffremove": "./scripts/ffremove.js"
+    "ffremove": "./scripts/ffremove.js",
+    "prep": "rm -rf template && mkdir template && cp .gitignore template/gitignore && cp README.md template/README.md && cp -rf public template/public && cp -rf src template/src && cp -rf scripts template/srcipts"
   },
   "eslintConfig": {
     "extends": "react-app"
