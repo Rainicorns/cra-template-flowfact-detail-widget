@@ -14,3 +14,6 @@ Before you can start, there are a few thinsg to do
 
 5. If you ever want to remove the widget
 - yarn ffremove
+
+# Typescript
+Just rename your Widget.js to Widget.tsx and put in required types. The project supports both jsx and tsx.
