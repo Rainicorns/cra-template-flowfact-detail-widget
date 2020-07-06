@@ -3,7 +3,7 @@ import postRobot from 'post-robot';
 import { Authentication, EnvironmentManagement, EntityService as Service } from '@flowfact/api-services'
 import { reactLocalStorage } from 'reactjs-localstorage';
 import Widget from './Widget';
-import settings from '../json/init.json'
+import settings from './config/init.json'
 
 function App() {
   const [entityID, setEntityID] = useState(0);
@@ -25,15 +25,17 @@ function App() {
       setTokens(reactLocalStorage.getObject('fftokens'));
     }
 
-    postRobot.on('initial_7TF20XP2P6', async ({ data }) => {
+    console.log("SETTINGS : ",settings)
+
+    postRobot.on(`initial_${settings.widget.configuration.moduleKey}`, async ({ data }) => {
       EnvironmentManagement.stage = data.environment.stage
       EnvironmentManagement.version = data.environment.versionTag
       reactLocalStorage.setObject('fftokens', data.tokens);
       setTokens(data.tokens);
 
     });
-    postRobot.send(window.parent, `ready_7TF20XP2P6`, true);
-    postRobot.on(`data_7TF20XP2P6`, async (event) => {
+    postRobot.send(window.parent, `ready_${settings.widget.configuration.moduleKey}`, true);
+    postRobot.on(`data_${settings.widget.configuration.moduleKey}`, async (event) => {
       setEntityID(event.data.entityId);
       setSchemaID(event.data.schemaId);
     });

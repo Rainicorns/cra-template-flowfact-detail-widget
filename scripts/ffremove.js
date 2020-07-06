@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 try {
-    const settings = require('../json/init.json')
+    const settings = require('../src/config/init.json')
     // console.log("Using settings : ", JSON.stringify(settings))
 
     const widgetID = settings.widget.id;

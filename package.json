@@ -24,7 +24,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ffinit": "./scripts/ffinit.js"
+    "ffinit": "./scripts/ffinit.js",
+    "ffadd": "./scripts/ffadd.js",
+    "ffremove": "./scripts/ffremove.js"
   },
   "eslintConfig": {
     "extends": "react-app"

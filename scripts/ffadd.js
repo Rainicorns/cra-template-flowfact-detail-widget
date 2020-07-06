@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const argv = require('yargs').argv
-const settings = require('../json/init.json')
+const settings = require('../src/config/init.json')
 
 if (argv.apiUserToken) {
     settings["apiUserToken"] = argv.apiUserToken
