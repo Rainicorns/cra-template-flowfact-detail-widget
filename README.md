@@ -14,7 +14,7 @@ To start a new template:
 The project supports both javascript and typescript out of the box.
 
 Before you can start coding:
-1. Initialize your widget configuration with your API User Token and Schema ID
+1. Initialize your widget configuration with your API User Token and Schema
 
     `yarn ffinit --apiUserToken=d41b9ff6-c221-4e7e-83af-5c757991372b --schema=contacts`
 

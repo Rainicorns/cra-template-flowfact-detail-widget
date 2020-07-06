@@ -1,6 +1,6 @@
 {
     "apiUserToken": "d41b9ff6-c221-4e7e-83af-5c757991372b",
-    "schema": "contacts",
+    "schema": "tasks",
     "widget": {
         "kind": "widget",
         "type": "FRAMED",
