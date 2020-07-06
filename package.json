@@ -1,14 +1,9 @@
 {
-  "name": "ff-helloworld-widget",
+  "name": "cra-template-flowfact-detail-widget",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@flowfact/api-services": "^16.20200629.286",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.18",
-    "faker": "^4.1.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.14.1",
     "post-robot": "10.0.14",
@@ -16,9 +11,23 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "reactjs-localstorage": "^1.0.1",
+    "typescript": "^3.9.6"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
     "write": "^2.0.0",
     "yargs": "^15.3.1"
   },
+  "main": "template.json",
+  "keywords": [
+    "react", 
+    "create-react-app",
+    "cra-template",
+    "template",
+    "flowfact"
+  ],
+ "files": ["template", "template.json"],
+ 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -27,7 +36,7 @@
     "ffinit": "./scripts/ffinit.js",
     "ffadd": "./scripts/ffadd.js",
     "ffremove": "./scripts/ffremove.js",
-    "prep": "rm -rf template && mkdir template && cp .gitignore template/gitignore && cp README.md template/README.md && cp -rf public template/public && cp -rf src template/src && cp -rf scripts template/srcipts"
+    "prep": "rm -rf template && mkdir template && cp .gitignore template/gitignore && cp README.md template/README.md && cp -rf public template/public && cp -rf src template/src && cp -rf scripts template/srcipts && cp template.json template/template.json"
   },
   "eslintConfig": {
     "extends": "react-app"
