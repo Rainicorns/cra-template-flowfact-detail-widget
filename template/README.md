@@ -33,6 +33,8 @@ Before you can start coding:
 
     This will create an endpoint. It will open a browser tab that will error because of the lack of postrobot, but it should be visible in the detail page of your schema.
 
+    You can optionally include a `--column=[COLUMN INDEX]` flag. If none is provided, it will assume the first column.
+
 1. See your widget in the detail page of the Schema
 
     If you navigate to the detail of an entity in the schema you've specified, you should see your widget.
