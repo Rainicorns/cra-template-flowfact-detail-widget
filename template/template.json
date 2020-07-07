@@ -3,15 +3,21 @@
     "@flowfact/api-services": "^16.20200629.286",
     "@types/react": "^16.9.41",
     "aws-amplify": "^3.0.18",
+    "install": "^0.13.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.14.1",
+    "npm": "^6.14.5",
     "post-robot": "10.0.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
     "react-json-pretty": "^2.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
     "reactjs-localstorage": "^1.0.1",
-    "typescript": "^3.9.6",
+    "typescript": "^3.9.6"
+  },
+  "devDependencies": {
     "faker": "^4.1.0",
     "write": "^2.0.0",
     "yargs": "^15.3.1"
