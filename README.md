@@ -39,9 +39,9 @@ Before you can start coding:
 
     If you navigate to the detail of an entity in the schema you've specified, you should see your widget.
 
-4. Modify `Widget.js` or `Widget.tsx`
+4. Modify `Widget.js` or `Widget.tsx` and `WidgetConfig.js`
 
-    You're good to go for both javascript and typescript
+    You're good to go for both javascript and typescript. The starter kit is already setup so the main entrypoint of your widget is the `Widget` functional component. A configuration screen is setup in the `WidgetConfig` functional component. It is configured to route `/` to `Widget` and `/config` to `WidgetConfig`. Of course, this is just a reactjs app so you can change that to your hearts content.
 
 5. If you ever want to remove the widget
 
